@@ -93,5 +93,10 @@ form.addEventListener("submit", function (e) {
   alert("Thêm liên hệ thành công!");
 });
 
+function deleteContact(index) {
+    if (!confirm("Bạn có chắc muốn xóa?")) return;
 
+    contacts.splice(index, 1);
+    render();
+}
 render()
