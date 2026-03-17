@@ -4,7 +4,7 @@ const phoneInput = document.getElementById("contact-phone");
 const emailInput = document.getElementById("contact-email");
 const tbody = document.getElementById("contact-tbody");
 
-let contacts = [];
+let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
 let phoneRegex = /^(0|\+84)[0-9]{9,10}$/;
 let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -85,15 +85,13 @@ form.addEventListener("submit", function (e) {
 
   contacts.push({ name, phone, email });
 
-  render();
+  localStorage.setItem("contacts", JSON.stringify(contacts));
 
+  render();
   form.reset();
 
   alert("Thêm liên hệ thành công!");
 });
 
-localStorage.setItem("nameInput",nameInput)
-localStorage.setItem("phoneInput",phoneInput)
-localStorage.setItem("emailInput",emailInput)
 
 render()
